@@ -22,8 +22,8 @@
 
 .menu-btn {
   position: relative;
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
 }
 
@@ -37,13 +37,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 .header-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 
 .phone {
@@ -51,7 +51,7 @@
 }
 
 .phone img {
-  width: 120px;
+  width: 90px;
 }
 
 .phone span {
@@ -60,26 +60,26 @@
   top: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .booking-btn {
   position: relative;
-  width: 90px;
+  width: 70px;
 }
 
 .booking-btn img {
-  width: 100%;
+  width: 70px;
 }
 
 .booking-btn span {
   position: absolute;
-  top: 50%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  font-size: 12px;
   text-align: center;
-  font-weight: bold;
 }
 
 
