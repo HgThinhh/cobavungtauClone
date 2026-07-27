@@ -10,8 +10,6 @@
 
   background: url("../img/2023_08_28_21_35_44_30.jpg") center center;
   background-size: cover;
-
-  overflow: hidden;
 }
 
 .overlay {
@@ -103,43 +101,65 @@
 
 
 
-.menu-offcanvas {
-  width: 340px;
-  background: #3f2a1f;
-  color: #fff;
+html {
+  scroll-behavior: smooth;
 }
 
+.menu-offcanvas {
+  width: 380px !important;
+  max-width: 90vw !important;
+  background-color: #ffffff !important;
+  color: #333333;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
 
+.menu-offcanvas::-webkit-scrollbar,
+.menu-offcanvas .offcanvas-body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.menu-offcanvas .offcanvas-body {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
 
 .menu-offcanvas .offcanvas-header {
   display: block;
   position: relative;
-  padding: 35px 25px;
-  border-bottom: 1px solid rgba(255, 255, 255, .15);
+  padding: 30px 25px 15px 25px;
+  background-color: #ffffff;
 }
 
 .menu-logo {
-  width: 130px;
+  width: 150px;
 }
-
-
 
 .language {
   display: flex;
   gap: 12px;
+  margin-top: 12px;
 }
 
 .language img {
-  width: 28px;
+  width: 26px;
+  height: 18px;
+  object-fit: cover;
   cursor: pointer;
-  transition: .3s;
+  transition: transform 0.2s ease;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .language img:hover {
   transform: scale(1.15);
 }
-
-
 
 .menu-list {
   list-style: none;
@@ -148,33 +168,91 @@
 }
 
 .menu-list li {
-  border-bottom: 1px solid rgba(255, 255, 255, .08);
-}
-
-.menu-list li:last-child {
-  border: none;
+  border-bottom: 1px solid #f2e6dc;
 }
 
 .menu-list a {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 10px;
-  color: #6c4b2b;
+  display: block;
+  padding: 16px 25px;
+  color: #8d5023;
   text-decoration: none;
-  font-size: 18px;
-  transition: .3s;
-}
-
-.menu-list a i {
-  width: 24px;
-  text-align: center;
+  font-size: 17px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
 }
 
 .menu-list a:hover {
-  background: #6c4b2b;
-  color: #f4d08b;
-  padding-left: 20px;
+  background-color: #faf5f0;
+  color: #6c3c17;
+  padding-left: 32px;
+}
+
+/* Khối Liên Hệ chuẩn mẫu thiết kế Cô Ba Vũng Tàu */
+.contact-header-block {
+  background-color: #8d5023;
+  color: #ffffff;
+  padding: 16px 25px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.contact-body-block {
+  padding: 20px 25px 30px 25px;
+  background-color: #ffffff;
+}
+
+.contact-address-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.addr-badge {
+  background-color: #c49a45;
+  color: #ffffff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.addr-text {
+  font-size: 13.5px;
+  color: #555555;
+  line-height: 1.45;
+}
+
+.contact-footer-info {
+  margin-top: 20px;
+  font-size: 13.5px;
+  color: #555555;
+}
+
+.text-email {
+  color: #8d5023;
+  text-decoration: none;
+}
+
+.text-email:hover {
+  text-decoration: underline;
+}
+
+.text-hotline {
+  color: #c49a45;
+  font-weight: 700;
+  font-size: 15.5px;
+  text-decoration: none;
+}
+
+.text-hotline:hover {
+  text-decoration: underline;
 }
 
 .about {
@@ -220,9 +298,11 @@
   .food h1 {
     font-size: 28px;
   }
+
   .food h2 {
     font-size: 20px;
   }
+
   .food .col-md-4 {
     font-size: 15px;
   }
@@ -491,15 +571,487 @@
 
 .hero-header {
   position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 30px;
-  width: 100%;
+  padding: 0 20px;
+  z-index: 1030;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .hero-header.hide {
-  transform: translateY(-100%);
+  transform: translateY(-120%);
   opacity: 0;
+  pointer-events: none;
+}
+
+.coba-booking-modal .modal-content {
+  background-color: #8c471c;
+  color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #aa5826;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.coba-booking-modal .modal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  display: block;
+  padding-bottom: 15px;
+}
+
+.coba-booking-modal .modal-title {
+  font-weight: 700;
+  font-size: 28px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.coba-booking-modal .modal-subtitle {
+  font-size: 14px;
+  color: #f1e4d8;
+  margin-top: 8px;
+}
+
+.coba-booking-modal label {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.coba-booking-modal .form-control,
+.coba-booking-modal .form-select {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.coba-booking-modal .btn-submit-booking {
+  background-color: #ffffff;
+  color: #5c3516;
+  border: none;
+  font-weight: 600;
+  padding: 8px 25px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.coba-booking-modal .btn-submit-booking:hover {
+  background-color: #f0e6df;
+}
+
+.coba-booking-modal .btn-close-booking {
+  background-color: #ffffff;
+  color: #5c3516;
+  border: none;
+  font-weight: 600;
+  padding: 8px 25px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.coba-booking-modal .btn-close-booking:hover {
+  background-color: #f0e6df;
+}
+
+/* Custom CSS cho Tabs Thực Đơn */
+#menuTabs .nav-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 8px 20px;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#menuTabs .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #f4d08b;
+}
+
+#menuTabs .nav-link.active {
+  background-color: #8d5023 !important;
+  color: #f4d08b !important;
+  border: 1px solid #f4d08b;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* =========================================
+ *  SECTION TIN TỨC & TRANG CHI TIẾT TIN TỨC
+ * ========================================= */
+.news-section {
+  background-color: #ffffff;
+}
+
+/* Hero Header Banner cho news.html & detailnews.html */
+.news-hero-banner {
+  position: relative;
+  background: url("../img/2023_08_28_21_35_44_30.jpg") center center no-repeat;
+  background-size: cover;
+  padding: 100px 0 45px 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.news-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.news-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.news-hero-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.news-hero-breadcrumb {
+  font-size: 13.5px;
+  color: #dddddd;
+}
+
+.news-hero-breadcrumb a {
+  color: #f4d08b;
+  text-decoration: none;
+}
+
+.news-hero-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Page Sub Header / Breadcrumb */
+.news-page-title-wrap {
+  text-align: center;
+  padding: 25px 0 15px 0;
+}
+
+.news-page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 4px;
+}
+
+.news-page-breadcrumb {
+  font-size: 13px;
+  color: #888888;
+}
+
+/* Card tin tức Grid */
+.news-card {
+  background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.news-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.news-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f0f0f0;
+  position: relative;
+}
+
+.news-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.news-card:hover .news-card-img {
+  transform: scale(1.05);
+}
+
+.news-card-body {
+  padding: 12px 2px 4px 2px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.news-card-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.45;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.news-card:hover .news-card-title {
+  color: #8d5023;
+}
+
+.news-card-summary {
+  font-size: 12.5px;
+  color: #666666;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Phân trang tin tức (Chuẩn theo mẫu) */
+.news-pagination-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+.news-page-btn {
+  min-width: 32px;
+  height: 32px;
+  border: 1px solid #dcdcdc;
+  background: #ffffff;
+  color: #333333;
+  border-radius: 2px;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0 8px;
+}
+
+.news-page-btn:hover {
+  background: #f5ede5;
+  border-color: #8d5023;
+  color: #8d5023;
+}
+
+.news-page-btn.active {
+  background: #d9251d;
+  border-color: #d9251d;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* GIAO DIỆN TRANG CHI TIẾT TIN TỨC (detailnews.html) */
+.news-detail-title-main {
+  font-size: 22px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.45;
+  margin-bottom: 8px;
+}
+
+.news-detail-date {
+  font-size: 12.5px;
+  color: #888888;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Hộp Mục Lục Nội Dung (TOC) */
+.toc-box {
+  background-color: #f9f9f9;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-bottom: 25px;
+}
+
+.toc-header {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.toc-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.toc-list li {
+  font-size: 13.5px;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.toc-list li a {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.toc-list li a:hover {
+  color: #8d5023;
+}
+
+/* Nội dung chi tiết bài viết */
+.news-detail-body {
+  font-size: 14.5px;
+  line-height: 1.8;
+  color: #333333;
+}
+
+.news-detail-body p {
+  margin-bottom: 16px;
+}
+
+.news-detail-body h3,
+.news-detail-body h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #8d5023;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.news-detail-body ul {
+  padding-left: 20px;
+  margin-bottom: 18px;
+}
+
+.news-detail-body ul li {
+  margin-bottom: 8px;
+}
+
+.news-detail-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+/* Sidebar "Bài viết khác" */
+.sidebar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #8d5023;
+  margin-bottom: 18px;
+}
+
+.other-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.other-news-item {
+  display: flex;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.other-news-item:hover {
+  text-decoration: none;
+}
+
+.other-news-thumb {
+  width: 80px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.other-news-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.other-news-item:hover .other-news-thumb img {
+  transform: scale(1.08);
+}
+
+.other-news-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.other-news-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #222222;
+  line-height: 1.4;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+}
+
+.other-news-item:hover .other-news-title {
+  color: #8d5023;
+}
+
+.other-news-summary {
+  font-size: 11.5px;
+  color: #777777;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+  .news-card-title {
+    font-size: 12.5px;
+  }
+
+  .news-card-summary {
+    display: none;
+  }
+
+  .news-detail-title-main {
+    font-size: 18px;
+  }
 }

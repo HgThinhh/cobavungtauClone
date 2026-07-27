@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết tin tức - Cô Ba Vũng Tàu</title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <script src="public/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/f6dce9b617.js" crossorigin="anonymous"></script>
+</head>
+
+<body style="background-color: #ffffff;">
+
+    <section id="hero">
+        <div class="overlay"></div>
+        <div class="hero-header">
+            <div class="menu-btn" data-bs-toggle="offcanvas" data-bs-target="#menuCanvas">
+                <img src="public/img/h_circle.png" alt="">
+                <span class="menu-icon">☰</span>
+            </div>
+            <div class="header-right">
+                <div class="phone">
+                    <img src="public/img/h_tel_bg.png" alt="">
+                    <span>028.3832.3312</span>
+                </div>
+                <div class="booking-btn" data-bs-toggle="modal" data-bs-target="#bookingModal" style="cursor: pointer;">
+                    <img src="public/img/h_circle.png" alt="">
+                    <span>ĐẶT<br>BÀN</span>
+                </div>
+            </div>
+        </div>
+        <div class="container h-100 ">
+            <div class="hero-center">
+                <img src="public/img/LogoHeader.png">
+            </div>
+        </div>
+        <div class="container">
+            <div class="scroll-down">
+                <img src="public/img/idx_mouse.png">
+            </div>
+        </div>
+    </section>
+
+    <div class="offcanvas offcanvas-start menu-offcanvas" tabindex="-1" id="menuCanvas">
+        <div class="offcanvas-header">
+            <div>
+                <a href="index.html">
+                    <img src="public/img/MenuLeft_Logo.png" class="menu-logo mb-2" alt="Logo Cô Ba Vũng Tàu">
+                </a>
+                <div class="language">
+                    <img src="public/img/flag_vi.png" alt="Việt Nam" title="Việt Nam">
+                    <img src="public/img/flag_en.png" alt="English" title="English">
+                    <img src="public/img/flag_korea.png" alt="Korea" title="Korea">
+                    <img src="public/img/flag_zh.png" alt="China" title="China">
+                </div>
+            </div>
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <ul class="menu-list">
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="index.html#gioithieu">Giới thiệu</a></li>
+                <li><a href="index.html#menu">Thực đơn</a></li>
+                <li><a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#bookingModal"
+                        data-bs-dismiss="offcanvas">Đặt bàn</a></li>
+                <li><a href="news.html" class="fw-bold" style="color: #8d5023;">Tin tức</a></li>
+            </ul>
+
+            <div class="contact-header-block">Liên hệ</div>
+            <div class="contact-body-block">
+                <div class="contact-address-item">
+                    <div class="addr-badge">1</div>
+                    <div class="addr-text">1 Hoàng Hoa Thám, Phường 3, TP. Vũng Tàu</div>
+                </div>
+                <div class="contact-address-item">
+                    <div class="addr-badge">2</div>
+                    <div class="addr-text">12C3-12C5 Dương Văn An, Phường 2, TP. Vũng Tàu</div>
+                </div>
+                <div class="contact-address-item">
+                    <div class="addr-badge">3</div>
+                    <div class="addr-text">216 Phạm Thái Bường, KP Mỹ Hoàng, PMH, P. Tân Phong, Q. 7, TP.HCM</div>
+                </div>
+                <div class="contact-address-item">
+                    <div class="addr-badge">4</div>
+                    <div class="addr-text">40B Trần Cao Vân, P. Võ Thị Sáu, Quận 3, TP.HCM</div>
+                </div>
+
+                <div class="contact-footer-info">
+                    <p class="mb-1">Mở cửa: 08:00 - 21:30</p>
+                    <p class="mb-1"><a href="mailto:banhkhotcobavungtau2004@gmail.com"
+                            class="text-email">banhkhotcobavungtau2004@gmail.com</a></p>
+                    <p class="mb-0">Hotline: <a href="tel:02838323312" class="text-hotline">028. 3832. 3312</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div id="detailLoading" class="text-center py-5">
+            <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Đang tải bài viết...</span>
+            </div>
+            <p class="mt-2 text-muted">Đang tải nội dung bài viết...</p>
+        </div>
+
+        <div class="row g-4" id="detailContentWrap" style="display: none;">
+            <div class="col-lg-8">
+                <h1 class="news-detail-title-main" id="articleTitle"></h1>
+                <div class="news-detail-date mb-3">
+                    <i class="far fa-clock"></i> <span id="articleDate"></span>
+                </div>
+
+                <div class="toc-box" id="tocContainer" style="display: none;">
+                    <div class="toc-header" onclick="toggleToc()">
+                        <span>Mục lục nội dung</span>
+                        <i class="fas fa-list-ul" id="tocToggleIcon"></i>
+                    </div>
+                    <ol class="toc-list" id="tocList"></ol>
+                </div>
+
+                <div class="news-detail-body" id="articleBody"></div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="sidebar-title">Bài viết khác</div>
+                <div class="other-news-list" id="otherNewsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="lienhe" class="footer ">
+        <div class="container">
+            <div class="row text-center mb-2">
+                <div class="col-md-6 branch">
+                    <img src="public/img/f_add.png" style="width: 13px;" alt="">
+                    <p>Số 1 Hoàng Hoa Thám, P.3, TP. Vũng Tàu</p>
+                    <p>0254 355 3567 - 0254 385 0327</p>
+                    <h4>Fanpage CN Hoàng Hoa Thám</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/banhkhotcobavungtau" data-tabs="timeline"
+                        data-width="340" data-height="400" data-small-header="false" data-adapt-container-width="true"
+                        data-hide-cover="false" data-show-facepile="true">
+                    </div>
+                </div>
+                <div class="col-md-6 branch">
+                    <img src="public/img/f_add.png" style="width: 13px;" alt="">
+                    <p>216 Phạm Thái Bường, Phú Mỹ Hưng, P. Tân Phong, Q. 7, TP.HCM</p>
+                    <p>028 36201281</p>
+                    <h4>Fanpage CN Phú Mỹ Hưng Q7</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/banhkhotcobavungtau.phumyhung"
+                        data-tabs="timeline" data-width="340" data-height="400" data-small-header="false"
+                        data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-6 branch">
+                    <img src="public/img/f_add.png" style="width: 13px;" alt="">
+                    <p>12/1 Hoàng Hoa Thám , P2 . Tp Vũng Tàu</p>
+                    <p>(0254) 352 6166</p>
+                    <h4>Fanpage CN 12/1 Hoàng Hoa Thám</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/banhkhotcobavungtau" data-tabs="timeline"
+                        data-width="340" data-height="400" data-small-header="false" data-adapt-container-width="true"
+                        data-hide-cover="false" data-show-facepile="true">
+                    </div>
+                </div>
+
+                <div class="col-md-6 branch">
+                    <img src="public/img/f_add.png" style="width: 13px;" alt="">
+                    <p>40B Trần Cao Vân, P. Võ Thị Sáu, Quận 3, TP.HCM</p>
+                    <p>028 3823 7356 - 028 3823 7956</p>
+                    <h4>Fanpage CN Trần Cao Vân Q3</h4>
+                    <div class="fb-page" data-href="https://www.facebook.com/banhkhotcobavungtau" data-tabs="timeline"
+                        data-width="340" data-height="400" data-small-header="false" data-adapt-container-width="true"
+                        data-hide-cover="false" data-show-facepile="true">
+                    </div>
+                </div>
+            </div>
+            <div class="contact text-center mt-5">
+                <p>Mở cửa: 08:00 - 22:00</p>
+                <p>Email: banhkhotcobavungtau@gmail.com</p>
+                <p>Hotline: <a href="tel:02838533327">028 3853 3327</a></p>
+            </div>
+
+            <div class="subscribe text-center mt-4">
+                <h2>Đăng ký nhận tin</h2>
+                <form id="subscribeForm" class="subscribe-form p-3">
+                    <input type="email" name="email" id="subscribeEmail" placeholder="Email *" required>
+                    <button type="submit" id="subscribeBtn">Đăng ký</button>
+                </form>
+                <img src="public/img/LogoHeader.png" alt="Logo Cô Ba Vũng Tàu" class="footer-logo">
+            </div>
+
+            <div class="footer-nav text-center mt-4 d-flex justify-content-center m-4 text-white">
+                <a href="#top" class="menu text-decoration-none mx-3">Trang chủ</a>
+                <a href="#gioithieu" class="menu text-decoration-none mx-3">Giới thiệu</a>
+                <a href="#menu" class="menu text-decoration-none mx-3">Thực đơn</a>
+                <a href="#booking" class="menu text-decoration-none mx-3">Đặt món</a>
+                <a href="#lienhe" class="menu text-decoration-none mx-3">Liên hệ</a>
+            </div>
+            <div class="text-final text-center p-5">
+                <p>Powered by mangxuyenviet.vn</p>
+            </div>
+        </div>
+    </footer>
+
+
+     <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0">
+    </script>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+    <div class="social-icons">
+        <a href="https://zalo.me/0906781268" target="_blank"><img src="public/img/btn_zalo.png" alt="Zalo"></a>
+        <a href="#"><img src="public/img/facebook-app-symbol.png" alt="Facebook"></a>
+    </div>
+
+    <div class="modal fade coba-booking-modal" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 500px;">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-2 text-center">
+                    <h3 class="modal-title w-100 text-center fw-bold" id="bookingModalLabel">Đặt bàn</h3>
+                    <p class="modal-subtitle mb-0">Quý khách vui lòng để lại thông tin đặt bàn.</p>
+                </div>
+                <div class="modal-body pt-3">
+                    <form id="bookingForm" novalidate>
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Họ tên *</label>
+                            <input type="text" class="form-control" id="fullname" name="fullname"
+                                placeholder="Nhập họ tên..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Số điện thoại *</label>
+                            <input type="tel" class="form-control" id="phone" name="phone"
+                                placeholder="Nhập số điện thoại..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="branch" class="form-label">Chọn chi nhánh *</label>
+                            <select class="form-select" id="branch" name="branch" required>
+                                <option value="" selected disabled>Vui lòng chọn chi nhánh</option>
+                                <option value="CN Hoàng Hoa Thám - Vũng Tàu">CN Hoàng Hoa Thám - Vũng Tàu</option>
+                                <option value="CN 12/1 Hoàng Hoa Thám - Vũng Tàu">CN 12/1 Hoàng Hoa Thám - Vũng Tàu
+                                </option>
+                                <option value="CN Phú Mỹ Hưng - Q.7, TP.HCM">CN Phú Mỹ Hưng - Q.7, TP.HCM</option>
+                                <option value="CN Trần Cao Vân - Q.3, TP.HCM">CN Trần Cao Vân - Q.3, TP.HCM</option>
+                            </select>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="booking_date" class="form-label">Ngày *</label>
+                                <input type="date" class="form-control px-2" id="booking_date" name="booking_date"
+                                    required>
+                            </div>
+                            <div class="col-4">
+                                <label for="booking_time" class="form-label">Thời gian *</label>
+                                <select class="form-select px-2" id="booking_time" name="booking_time" required>
+                                    <option value="" selected disabled>---</option>
+                                    <option value="08:00">08:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="guests" class="form-label">Số người *</label>
+                                <input type="number" class="form-control" id="guests" name="guests" min="1" max="100"
+                                    value="2" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="note" class="form-label">Ghi chú</label>
+                            <textarea class="form-control" id="note" name="note" rows="3"
+                                placeholder="Nhập ghi chú..."></textarea>
+                        </div>
+
+                        <div id="bookingAlert" class="alert d-none my-2" role="alert"></div>
+
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <button type="submit" class="btn btn-submit-booking">Gửi yêu cầu</button>
+                            <button type="button" class="btn btn-close-booking" data-bs-dismiss="modal">Đóng</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* === HEADER: Cuộn xuống ẩn, cuộn lên hiện === */
+        (function () {
+            const header = document.querySelector('.hero-header');
+            if (!header) return;
+            let lastScrollTop = 0;
+            let offcanvasOpen = false;
+
+            window.addEventListener('scroll', function () {
+                if (offcanvasOpen) return;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 50) {
+                    header.classList.add('hide');
+                } else {
+                    header.classList.remove('hide');
+                }
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, { passive: true });
+
+            const menuCanvas = document.getElementById('menuCanvas');
+            if (menuCanvas) {
+                menuCanvas.addEventListener('show.bs.offcanvas', function () {
+                    offcanvasOpen = true;
+                    header.classList.add('hide');
+                });
+                menuCanvas.addEventListener('hide.bs.offcanvas', function () {
+                    offcanvasOpen = false;
+                    header.classList.remove('hide');
+                });
+            }
+        })();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentNewsId = parseInt(urlParams.get('id')) || 0;
+
+        async function loadNewsDetail() {
+            if (!currentNewsId) {
+                window.location.href = 'news.html';
+                return;
+            }
+
+            try {
+                const resDetail = await fetch(`news.php?action=get_detail&id=${currentNewsId}`);
+                const dataDetail = await resDetail.json();
+
+                if (dataDetail.status !== 'success' || !dataDetail.data) {
+                    alert('Bài viết không tồn tại!');
+                    window.location.href = 'news.html';
+                    return;
+                }
+
+                const news = dataDetail.data;
+
+                document.title = news.title + " - Cô Ba Vũng Tàu";
+
+                document.getElementById('articleTitle').textContent = news.title;
+                const postDate = new Date(news.created_at);
+                document.getElementById('articleDate').textContent = "Ngày đăng: " + postDate.toLocaleDateString('vi-VN');
+
+                let fullContentHtml = '';
+
+                if (news.summary) {
+                    fullContentHtml += `<p class="fw-semibold text-dark" style="font-size: 15px; line-height: 1.7; background: #fff8f0; padding: 14px 18px; border-left: 4px solid #8d5023; border-radius: 4px; margin-bottom: 20px;">${escapeHtml(news.summary)}</p>`;
+                }
+
+                if (news.image) {
+                    fullContentHtml += `
+                        <div class="text-center my-3">
+                            <img src="${escapeHtml(news.image)}" alt="${escapeHtml(news.title)}" class="img-fluid rounded shadow" style="max-height: 480px; width: 100%; object-fit: cover;" onerror="this.src='public/img/LogoHeader.png'">
+                        </div>
+                    `;
+                }
+
+                if (news.content && news.content.trim() !== '') {
+                    fullContentHtml += news.content;
+                }
+
+                document.getElementById('articleBody').innerHTML = fullContentHtml;
+
+                generateToc();
+
+                document.getElementById('detailLoading').style.display = 'none';
+                document.getElementById('detailContentWrap').style.display = 'flex';
+
+                loadOtherNews();
+
+            } catch (e) {
+                console.error("Lỗi khi tải chi tiết bài viết:", e);
+            }
+        }
+
+        function generateToc() {
+            const body = document.getElementById('articleBody');
+            const headings = body.querySelectorAll('h2, h3, h4');
+            const tocContainer = document.getElementById('tocContainer');
+            const tocList = document.getElementById('tocList');
+
+            if (headings.length === 0) {
+                tocContainer.style.display = 'none';
+                return;
+            }
+
+            tocList.innerHTML = '';
+            headings.forEach((h, index) => {
+                const headingId = 'toc-heading-' + (index + 1);
+                h.id = headingId;
+
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#' + headingId;
+                a.textContent = (index + 1) + '. ' + h.textContent;
+                a.onclick = function (e) {
+                    e.preventDefault();
+                    document.getElementById(headingId).scrollIntoView({behavior: 'smooth', block: 'center'});
+                };
+                li.appendChild(a);
+                tocList.appendChild(li);
+            });
+
+            tocContainer.style.display = 'block';
+        }
+
+        function toggleToc() {
+            const list = document.getElementById('tocList');
+            if (list.style.display === 'none') {
+                list.style.display = 'block';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+
+        async function loadOtherNews() {
+            try {
+                const res = await fetch('news.php?action=get_all');
+                const data = await res.json();
+
+                if (data.status === 'success' && data.data) {
+                    const otherItems = data.data.filter(n => parseInt(n.id) !== currentNewsId);
+                    const container = document.getElementById('otherNewsList');
+
+                    if (otherItems.length === 0) {
+                        container.innerHTML = '<p class="text-muted small">Không có bài viết khác.</p>';
+                        return;
+                    }
+
+                    container.innerHTML = otherItems.map(n => `
+                        <a href="detailnews.html?id=${n.id}" class="other-news-item">
+                            <div class="other-news-thumb">
+                                <img src="${escapeHtml(n.image)}" alt="${escapeHtml(n.title)}" onerror="this.src='public/img/LogoHeader.png'">
+                            </div>
+                            <div class="other-news-info">
+                                <h6 class="other-news-title">${escapeHtml(n.title)}</h6>
+                                <p class="other-news-summary">${escapeHtml(n.summary)}</p>
+                            </div>
+                        </a>
+                    `).join('');
+                }
+            } catch (e) {
+                console.error("Lỗi tải bài viết khác:", e);
+            }
+        }
+
+        function escapeHtml(text) {
+            if (!text) return '';
+            const d = document.createElement('div');
+            d.appendChild(document.createTextNode(text));
+            return d.innerHTML;
+        }
+
+        // Back to top
+        window.onscroll = function () {
+            const btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        document.getElementById("backToTop").onclick = function () {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+
+        // Form đặt bàn
+        document.getElementById('booking_date').valueAsDate = new Date();
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('bookingAlert');
+            const formData = new FormData(this);
+
+            fetch('booking.php', {method: 'POST', body: formData})
+                .then(res => res.json())
+                .then(data => {
+                    alertBox.classList.remove('d-none');
+                    if (data.status === 'success') {
+                        alertBox.className = 'alert alert-success my-2';
+                        alertBox.textContent = data.message;
+                        document.getElementById('bookingForm').reset();
+                        setTimeout(() => {
+                            const modalEl = document.getElementById('bookingModal');
+                            const modal = bootstrap.Modal.getInstance(modalEl);
+                            if (modal) modal.hide();
+                        }, 2000);
+                    } else {
+                        alertBox.className = 'alert alert-danger my-2';
+                        alertBox.textContent = data.message;
+                    }
+                });
+        });
+
+        // Form Đăng ký nhận tin
+        const subForm = document.getElementById('subscribeForm');
+        if (subForm) {
+            subForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('subscribeBtn');
+                const emailInput = document.getElementById('subscribeEmail');
+                const originalText = btn.textContent;
+
+                btn.disabled = true;
+                btn.textContent = 'Đang gửi...';
+
+                const formData = new FormData(this);
+
+                fetch('subscribe.php', { method: 'POST', body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                    if (data.status === 'success') {
+                        alert(data.message || 'Đăng ký thành công!');
+                        emailInput.value = '';
+                    } else {
+                        alert(data.message || 'Không thể đăng ký. Vui lòng thử lại!');
+                    }
+                })
+                .catch(err => {
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                    alert('Đăng ký thành công!');
+                    emailInput.value = '';
+                });
+            });
+        }
+
+        loadNewsDetail();
+    </script>
+</body>
+
+</html>
